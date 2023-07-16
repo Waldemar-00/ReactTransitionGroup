@@ -37,3 +37,19 @@
     transform: rotate(360deg);
   }
 }
+.modal-enter {
+  opacity: 0;
+}
+.modal-enter-active {
+  transition: all 700ms ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+.modal-exit {
+  opacity: 1;
+}
+.modal-exit-active {
+  transition: all 700ms ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
