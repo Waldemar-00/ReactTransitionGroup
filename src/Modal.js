@@ -12,14 +12,16 @@ const showStyles = {
   transition: `all 700ms ease-in-out`
 }
 const ModalWindow = (props) => {
-  console.log(props.show)
   return (
         <div className="modal mt-5 d-block" style={props.show ? showStyles :  hiddenStyles}>
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title">Typical modal window</h5>
-                  <button onClick={() => props.setShow(false)} type="button" className="btn-close" aria-label="Close"></button>
+            <button onClick={() => {
+              props.setShow(false)
+              props.setBtnShow(true)
+            }} type="button" className="btn-close" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
                   <p>Modal body content</p>
@@ -43,7 +45,16 @@ const ModalWindow = (props) => {
 function Modal() {
   const [show, setShow] = useState(false)
   const [btnShow, setBtnShow] = useState(true)
-
+  const showBtnStyles = {
+    opacity: 1,
+    visibility: 'visible',
+    transition: 'all 700ms ease-in-out'
+  }
+  const hiddenBtnStyles = {
+    opacity: 0,
+    visibility: 'hidden',
+    transition: 'all 700ms ease-in-out'
+  }
     return (
         <Container>
         <ModalWindow
@@ -51,14 +62,14 @@ function Modal() {
           setShow={setShow}
           setBtnShow={setBtnShow}
         />
-        { btnShow ? <button 
+        <button 
           type="button" 
           className="btn btn-warning mt-5"
+          style={btnShow ? showBtnStyles : hiddenBtnStyles}
           onClick={() => {
             setShow(true)
             setBtnShow(false)
-          }}>Open Modal</button> : null
-        }
+          }}>Open Modal</button>
         </Container>
     );
 }
