@@ -16,6 +16,9 @@ function TodoList() {
   function onDeleteInput(e) {
     setArray(array.filter(arr => arr.id !== e.target.id))
   }
+  function onFocusInpuit() {
+    setInput('')
+  }
   return (
     <>
       <div className="wrap">
@@ -32,7 +35,13 @@ function TodoList() {
       </ul>
       <div className="input">
         <label htmlFor="input" >Add to the list</label>
-          <input id="input" type='text' value={input} onChange={onChange} />
+          <input
+            id="input"
+            type='text'
+            value={input}
+            onChange={onChange}
+            onFocus={onFocusInpuit}
+          />
           <button onClick={onAdd} className='btn'>Push</button>
       </div>
       </div>
