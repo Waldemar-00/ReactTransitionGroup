@@ -5,8 +5,7 @@ function TodoList() {
   const [array, setArray] = useState([{ text: 'hello', id: v4() }, { text: 'World', id: v4() }])
   const [input, setInput] = useState('')
   useEffect(() => {
-    console.log(array)
-  }, [array])
+  }, [])
   function onChange(e) {
     setInput(e.target.value)
   }
@@ -27,7 +26,10 @@ function TodoList() {
             array.map(({text, id}) => {
               return (
                 <Fragment key={id}>
-                  <li id={id} onClick={onDeleteInput}>&#10008; {text}</li>
+                  <div className="notation">
+                    <li id={id} onClick={onDeleteInput}>&#10008; {text}</li>
+                    <input type="date" className='date' />
+                  </div>
                 </Fragment>
               )
             })
